@@ -36,19 +36,18 @@
   self.addEventListener('message', function(event) {
     var data = event.data;
 
-    if (data && data['type'] === 'common-worker-connect') {
+    if (data && data.type === 'common-worker-connect') {
       var EventConstructor =
           self.CustomEvent ||
           self.Event ||
           // NOTE(cdata): Have mercy on my soul..
           event.__proto__.__proto__.constructor;
-
       var connectEvent = new EventConstructor('connect');
-      connectEvent.ports = event.ports;
 
+      connectEvent.ports = event.ports;
       self.dispatchEvent(connectEvent);
     }
   }.bind(this));
 
-  self.importScripts(workerScript);
+  self.importScripts([workerScript]);
 })();
