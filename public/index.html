@@ -15,35 +15,54 @@
     <script src="bower_components/web-animations-js/web-animations.min.js"></script>
     <link rel="import" href="bower_components/platinum-sw/platinum-sw-elements.html">
     <link rel="import" href="bower_components/polymerfire/firebase-app.html">
+    <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
     <link rel="import" href="profile.html">
+
 
     <style>
       body {
         margin: 0;
+        font-family: Roboto, Noto, sans-serif;
       }
-
 
     </style>
 </head>
 <body>
 <platinum-sw-register
-    auto-register
-    skip-waiting
-    clients-claim
-    reload-on-install
-    href="sw-import.js">
-  <platinum-sw-cache
-      default-cache-strategy="networkFirst">
-  </platinum-sw-cache>
+        auto-register
+        skip-waiting
+        clients-claim
+        reload-on-install
+        href="sw-import.js">
+    <platinum-sw-cache
+            default-cache-strategy="networkFirst">
+    </platinum-sw-cache>
 </platinum-sw-register>
 
 
 <firebase-app
-    name="vita-moms"
-    api-key="AIzaSyBQzasMMq2vowlyEb-w_DwA7Gg4HVX9G5M"
-    auth-domain="vita-moms.firebaseapp.com"
-    database-url="https://vita-moms.firebaseio.com">
+        name="vita-moms"
+        api-key="AIzaSyBQzasMMq2vowlyEb-w_DwA7Gg4HVX9G5M"
+        auth-domain="vita-moms.firebaseapp.com"
+        database-url="https://vita-moms.firebaseio.com">
 </firebase-app>
+
+<app-header reveals>
+  <app-toolbar>
+    <paper-icon-button icon="arrow-back" onclick="drawer.toggle()"></paper-icon-button>
+    <div main-title>ВСТРЕЧИ И СОБЫТИЯ</div>
+    <paper-icon-button icon="more-vert"></paper-icon-button>
+    <paper-progress value="10" indeterminate bottom-item></paper-progress>
+  </app-toolbar>
+</app-header>
+<!--<sample-content size="10"></sample-content>-->
+
+<paper-tabs selected="0">
+    <paper-tab>ХОЧУ</paper-tab>
+    <paper-tab>ЛЮБЛЮ</paper-tab>
+    <paper-tab>ПОДРУГИ</paper-tab>
+</paper-tabs>
+
 <x-grid></x-grid>
 
 </body>
