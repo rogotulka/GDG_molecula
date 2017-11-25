@@ -33,6 +33,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="bower_components/iron-image/iron-image.html">
 <link rel="import" href="bower_components/iron-list/iron-list.html">
 <link rel="import" href="bower_components/iron-scroll-threshold/iron-scroll-threshold.html">
+<link rel="import" href="bower_components/paper-fab/paper-fab.html">
 
 <!--<style>-->
 
@@ -70,6 +71,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           margin-top: 90px;
           padding-bottom: 16px;
         }
+
+
+        paper-fab {
+            position: fixed;
+            right: 25px;
+            bottom: 30px;
+         }
 
         .photoContent {
           @apply --layout;
@@ -134,6 +142,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           vertical-align: middle;
         }
 
+
         @media (max-width: 800px) {
           .photoContainer {
             width: calc(50% - 16px);
@@ -173,6 +182,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         ::-ms-input-placeholder {
           color: rgba(255, 255, 255, 0.5);
         }
+    }
+
 
 
 
@@ -187,6 +198,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </app-toolbar>
         </app-header>
 
+
         <iron-list items="[[photos]]" as="photo" scroll-target="document" grid>
             <template>
                 <div class="photoContainer">
@@ -197,8 +209,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <div class="detail">[[photo.title]]</div>
                     </div>
                 </div>
+
+                <!--<paper-fab class="label" label="😻" title="heart eyes cat"></paper-fab>-->
             </template>
         </iron-list>
+        <paper-fab icon="add"></paper-fab>
 
         <div class="loadingIndicator" hidden$="[[!loadingPhotos]]">
             <paper-spinner active$="[[loadingPhotos]]"></paper-spinner>
@@ -211,6 +226,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                on-lower-threshold="_onLowerThreshold"
                                scroll-target="document">
         </iron-scroll-threshold>
+
 
     </template>
 </dom-module>
@@ -307,6 +323,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       });
 
     });
+
+
 
 
 
