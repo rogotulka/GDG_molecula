@@ -53,23 +53,7 @@
         database-url="https://vita-moms.firebaseio.com">
 </firebase-app>
 
-<app-header reveals>
-  <app-toolbar>
-    <paper-icon-button icon="arrow-back" onclick="drawer.toggle()"></paper-icon-button>
-    <div main-title>ВСТРЕЧИ И СОБЫТИЯ</div>
-    <paper-icon-button icon="more-vert"></paper-icon-button>
-    <paper-progress value="10" indeterminate bottom-item></paper-progress>
-  </app-toolbar>
-</app-header>
-<!--<sample-content size="10"></sample-content>-->
-
-<paper-tabs selected="0">
-    <paper-tab>ХОЧУ</paper-tab>
-    <paper-tab>ЛЮБЛЮ</paper-tab>
-    <paper-tab>ПОДРУГИ</paper-tab>
-</paper-tabs>
-
-<x-grid></x-grid>
+<x-profile></x-profile>
 
 </body>
 </html>
