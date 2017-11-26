@@ -3,85 +3,21 @@
 <link rel="import" href="bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="bower_components/iron-image/iron-image.html">
 <link rel="import" href="bower_components/iron-icons/iron-icons.html">
-<link rel="import" href="bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+<!--<link rel="import" href="bower_components/iron-demo-helpers/demo-pages-shared-styles.html">-->
 <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="meetings.html">
+<link rel="import" href="bower_components/app-layout/app-grid/app-grid-style.html">
+<link rel="import" href="core-layout-grid.html">
+<style is="custom-style" include="demo-pages-shared-styles">
+<link rel="import" href="bower_components/iron-demo-helpers/demo-snippet.html">
+<link rel="import" href="bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
 
 <dom-module id="app-grid-style">
     <template>
         <style>
-      :host {
-        /**
-         * The width for the expandible item is:
-         * ((100% - subPixelAdjustment) / columns * itemColumns - gutter
-         *
-         * - subPixelAdjustment: 0.1px (Required for IE 11)
-         * - gutter: var(--app-grid-gutter)
-         * - columns: var(--app-grid-columns)
-         * - itemColumn: var(--app-grid-expandible-item-columns)
-         */
-        --app-grid-expandible-item: {
-          -webkit-flex-basis: calc((100% - 0.1px) / var(--app-grid-columns, 1) * var(--app-grid-expandible-item-columns, 1) - var(--app-grid-gutter, 0px)) !important;
-          flex-basis: calc((100% - 0.1px) / var(--app-grid-columns, 1) * var(--app-grid-expandible-item-columns, 1) - var(--app-grid-gutter, 0px)) !important;
-          max-width: calc((100% - 0.1px) / var(--app-grid-columns, 1) * var(--app-grid-expandible-item-columns, 1) - var(--app-grid-gutter, 0px)) !important;
-        };
-      }
-      .app-grid {
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -ms-flex-direction: row;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -ms-flex-wrap: wrap;
-        -webkit-flex-wrap: wrap;
-        flex-wrap: wrap;
-        padding-top: var(--app-grid-gutter, 0px);
-        padding-left: var(--app-grid-gutter, 0px);
-        box-sizing: border-box;
-      }
-      .app-grid > * {
-        /* Required for IE 10 */
-        -ms-flex: 1 1 100%;
-        -webkit-flex: 1;
-        flex: 1;
-        /* The width for an item is: (100% - subPixelAdjustment - gutter * columns) / columns */
-        -webkit-flex-basis: calc((100% - 0.1px - (var(--app-grid-gutter, 0px) * var(--app-grid-columns, 1))) / var(--app-grid-columns, 1));
-        flex-basis: calc((100% - 0.1px - (var(--app-grid-gutter, 0px) * var(--app-grid-columns, 1))) / var(--app-grid-columns, 1));
-        max-width: calc((100% - 0.1px - (var(--app-grid-gutter, 0px) * var(--app-grid-columns, 1))) / var(--app-grid-columns, 1));
-        margin-bottom: var(--app-grid-gutter, 0px);
-        margin-right: var(--app-grid-gutter, 0px);
-        height: var(--app-grid-item-height);
-        box-sizing: border-box;
-      }
-      .app-grid[has-aspect-ratio] > * {
-        position: relative;
-      }
-      .app-grid[has-aspect-ratio] > *::before {
-        display: block;
-        content: "";
-        padding-top: var(--app-grid-item-height, 100%);
-      }
-      .app-grid[has-aspect-ratio] > * > * {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-      }
 
-
-
-
-
-
-
-
-
-
-
-        </style>
-    </template>
+</style>
+</template>
 </dom-module>
 
 <dom-module id="x-profile">
@@ -90,10 +26,11 @@
             paper-button {
                 --paper-button: {
 
-                @apply(--layout-horizontal);
+
                 @apply(--layout-center);};
                 font-family: Roboto, Noto, sans-serif;
                 font:32px;
+                width:270px;
                 color:white;
                 margin-right: 30%;
                 margin-left: 30%;
@@ -101,71 +38,65 @@
 
             }
 
+            ul {
+                padding: 0;
+                    list-style: none;
+            }
+
             #meetings{
                 display: none;
             }
-
-
-
-
-
-
-
-
-
-
-        </style>
-
-        <style include="app-grid-style">
-
             body {
-                margin: 0;
+
                 font-family: Roboto, Noto, sans-serif;
             }
             #profile-image {
-                height: 200px;
+                height: 260px;
                 background-color: #ff9800;
             }
 
-            paper-button{
-                background-color: #ff9800;
-                font-family: Roboto, Noto, sans-serif;
-                font:32px;
-            }
 
             #butt {
                 background-color :#afb42b;
             }
 
 
-        :host {
-          display: block;
-          --app-grid-columns: 3;
-          --app-grid-gutter: 10px;
-          --app-grid-expandible-item-columns: 3;
-          --app-grid-item-height: 12vw;
+
+
+
+
+
+
+
+
+
+
+  .container {
+      <!--@apply(&#45;&#45;layout-grid-justify-items-center);-->
+      --app-grid-columns: 3;
+      @apply --layout;
+      <!--grid-template-columns: 200px 200px 200px;-->
+      @apply --layout-flex;
+       width: 500px;
+       height: 400px;
+  }
+
+  .container > div {
+      border: 1px solid rgba(0,95,107);
+      border-radius: 3px;
+
+      margin-bottom: 10px;
+      margin-top: 40px;
+  }
+
+#example-sizing-cover {
+        width: 490px;
+        height: 260px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
 
         }
-
-        ul {
-          margin: 0;
-          padding: 0;
-          list-style: none;
-        }
-
-        <!--.item:nth-child(4n) {-->
-            <!--@apply &#45;&#45;app-grid-expandible-item;-->
-        <!--}-->
-
-        ul {
-            padding: 0;
-            list-style: none;
-        }
-
-
-
-
-
 
 
 
@@ -174,6 +105,7 @@
 
 
         </style>
+
 
         <app-header reveals>
             <app-toolbar>
@@ -183,32 +115,9 @@
                 <paper-progress value="10" indeterminate bottom-item></paper-progress>
             </app-toolbar>
         </app-header>
-        <!--<sample-content size="10"></sample-content>-->
-
-        <!--<iron-image style="width:60px; height:60px;"-->
-        <!--src="res/mipmap-xxxhgroup.png.png"></iron-image>-->
-        <!--<div id="profile-image">-->
 
 
-        <!--<iron-image style="width:60px; height:60px;"-->
-        <!--src="res/mipmap-xxxhgroup.png.png"></iron-image>-->
         <div id="profile-image">
-            <custom-style>
-                <style is="custom-style">
-        #example-sizing-cover {
-        width: 450px;
-        height: 200px;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-        <!--@apply(&#45;&#45;layout-horizontal);-->
-        <!--@apply(&#45;&#45;layout-center-center);-->
-
-        }
-
-
-                </style>
-            </custom-style>
 
             <iron-image sizing="cover" id="example-sizing-cover" alt="The Polymer logo."
                         src="res/group.png"></iron-image>
@@ -219,35 +128,35 @@
             <paper-tab>ПОДРУГИ</paper-tab>
         </paper-tabs>
 
-        <ul class="app-grid" id ="grid">
-            <li class="item">
+        <div class="container" id="grid">
 
-                <paper-button toggles raised id="butt" onclick="setColor(event)">Гулять в парке
-                </paper-button>
 
-            </li>
-            <li class="item">
+            <div>
+                <paper-button toggles raised id="butt" onclick="setColor(event)">Гулять в парке</paper-button>
+            </div>
 
+            <div>
                 <paper-button toggles raised id="butt" onclick="setColor(event)">Вязание</paper-button>
+            </div>
 
-            </li>
-            <li class="item">
-
+            <div>
                 <paper-button toggles raised id="butt" onclick="setColor(event)">Дача</paper-button>
+            </div>
 
-            </li>
-            <li class="item">
 
+            <div>
                 <paper-button toggles raised id="butt" onclick="setColor(event)">Daft Punk</paper-button>
+            </div>
+            <div>
+                <paper-button toggles raised id="butt" onclick="setColor(event)">Астрономия</paper-button>
+            </div>
+            <div>
+                <paper-button toggles raised id="butt" onclick="setColor(event)">Детективы</paper-button>
+            </div>
+        </div>
 
-            </li>
-        </ul>
 
         <x-grid id="meetings"></x-grid>
-
-        <!--<paper-material elevation="0">-->
-            <!--<paper-button toggles raised>ПРОДОЛЖИТЬ</paper-button>-->
-        <!--</paper-material>-->
 
     </template>
 </dom-module>
@@ -263,6 +172,8 @@
         ready: function() {
             document.getElementById('meetings').style.display = 'block';
             document.getElementById('grid').style.display = 'none';
+            document.getElementById("profile-image").style.backgroundImage = "url('res/molecula.png')";
+            document.getElementById("profile-image").style.backgroundRepeat = "repeat";
         },
 
         onAtSelect: function(e) {
@@ -279,6 +190,8 @@
             }
             if(text == 'ПОДРУГИ'){
                 this.customStyle['--paper-tabs-selection-bar-color'] = 'white';
+                 document.getElementById('meetings').style.display = 'none';
+                document.getElementById('grid').style.display = 'none';
             }
         }
     })
@@ -290,5 +203,6 @@
         target.style.backgroundColor = count === 1 ? '#afb42b' : "#cddc39";
         target.dataset.count = count === 1 ? 0 : 1;
     }
+
 
 </script>
