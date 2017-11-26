@@ -5,6 +5,7 @@
 <link rel="import" href="bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
 <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="meetings.html">
 
 <dom-module id="app-grid-style">
     <template>
@@ -78,6 +79,7 @@
 
 
 
+
         </style>
     </template>
 </dom-module>
@@ -99,6 +101,9 @@
 
             }
 
+            #meetings{
+                display: none;
+            }
 
 
 
@@ -167,6 +172,7 @@
 
 
 
+
         </style>
 
         <app-header reveals>
@@ -200,19 +206,20 @@
 
         }
 
+
                 </style>
             </custom-style>
 
             <iron-image sizing="cover" id="example-sizing-cover" alt="The Polymer logo."
                         src="res/group.png"></iron-image>
         </div>
-        <paper-tabs selected="0">
+        <paper-tabs selected="0" id="my_menu" selected="{{selected}}" on-tap="onAtSelect">
             <paper-tab>ХОЧУ</paper-tab>
             <paper-tab>ЛЮБЛЮ</paper-tab>
             <paper-tab>ПОДРУГИ</paper-tab>
         </paper-tabs>
 
-        <ul class="app-grid">
+        <ul class="app-grid" id ="grid">
             <li class="item">
 
                 <paper-button toggles raised id="butt" onclick="setColor(event)">Гулять в парке
@@ -235,15 +242,45 @@
 
             </li>
         </ul>
-        <paper-material elevation="0">
-            <paper-button toggles raised>ПРОДОЛЖИТЬ</paper-button>
-        </paper-material>
+
+        <x-grid id="meetings"></x-grid>
+
+        <!--<paper-material elevation="0">-->
+            <!--<paper-button toggles raised>ПРОДОЛЖИТЬ</paper-button>-->
+        <!--</paper-material>-->
+
     </template>
 </dom-module>
 <script>
     Polymer({
         is: 'x-profile',
 
+        properties: {
+            selected: Number,
+            value: 0
+        },
+
+        ready: function() {
+            document.getElementById('meetings').style.display = 'block';
+            document.getElementById('grid').style.display = 'none';
+        },
+
+        onAtSelect: function(e) {
+            text = e.target.innerText;
+            if(text == 'ХОЧУ'){
+              this.customStyle['--paper-tabs-selection-bar-color'] = 'white';
+              document.getElementById('meetings').style.display = 'block';
+              document.getElementById('grid').style.display = 'none';
+            }
+            if(text == 'ЛЮБЛЮ'){
+                this.customStyle['--paper-tabs-selection-bar-color'] = 'white';
+                document.getElementById('meetings').style.display = 'none';
+                document.getElementById('grid').style.display = 'block';
+            }
+            if(text == 'ПОДРУГИ'){
+                this.customStyle['--paper-tabs-selection-bar-color'] = 'white';
+            }
+        }
     })
 
     function setColor(e) {
@@ -253,8 +290,5 @@
         target.style.backgroundColor = count === 1 ? '#afb42b' : "#cddc39";
         target.dataset.count = count === 1 ? 0 : 1;
     }
-
-
-
 
 </script>
