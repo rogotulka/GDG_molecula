@@ -161,6 +161,9 @@
 
 
 
+
+
+
         </style>
 
         <!--<app-header reveals>-->
@@ -180,31 +183,32 @@
         <!--</paper-tabs>-->
 
         <!--<iron-ajax id="ajax" loading="{{loadingPhotos}}" url="[[_getAPIEndpoint(apiKey, searchText, page)]]"-->
-                   <!--handle-as="text" on-response="_didReceiveResponse"></iron-ajax>-->
+        <!--handle-as="text" on-response="_didReceiveResponse"></iron-ajax>-->
 
 
         <iron-list items="[[photos]]" as="photo" scroll-target="document" grid>
-            <template>
+
                 <div class="photoContainer">
-                    <div class="photoContent" >
-                        <template is="dom-repeat" items="{{photos}}">
+
+                    <template is="dom-repeat" items="{{photos}}">
+
+                        <div class="photoContent">
                             <iron-image sizing="cover"
                                         src="{{item.path}}">
-                            </iron-image>
-                        </template>
 
-                        <div class="detail">{{item.title}}</div>
-                    </div>
+                            </iron-image>
+                            <div class="detail">{{item.title}}</div>
+                        </div>
+
+                    </template>
                 </div>
 
-
-            </template>
         </iron-list>
         <paper-fab icon="add"></paper-fab>
 
         <!--<div class="loadingIndicator" hidden$="[[!loadingPhotos]]">-->
-            <!--<paper-spinner active$="[[loadingPhotos]]"></paper-spinner>-->
-            <!--Fetching photos for <b>[[searchText]]</b>-->
+        <!--<paper-spinner active$="[[loadingPhotos]]"></paper-spinner>-->
+        <!--Fetching photos for <b>[[searchText]]</b>-->
         <!--</div>-->
 
         <!-- this element loads more photos when the user scrolls down and reached the lower threshold -->
@@ -228,15 +232,18 @@
 
         ready: function() {
         this.photos = [
-            {path: 'res/1.png', title:'fsdfas'},
-            {path: 'res/2.png', title:'fsdfas'},
-            {path: 'res/3.png', title:'fsdfas'}
+            {path: 'res/1.jpg', title:'fsdfas'},
+            {path: 'res/2.jpg', title:'fsdfas'},
+            {path: 'res/3.jpg', title:'fsdfas'}
 
             ]}
 
         });
 
     });
+
+
+
 
 
 
