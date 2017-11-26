@@ -1,6 +1,7 @@
 <link rel="import" href="bower_components/paper-item/paper-item.html">
 <link rel="import" href="bower_components/paper-button/paper-button.html">
 <link rel="import" href="bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="bower_components/iron-image/iron-image.html">
 <link rel="import" href="bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
 <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
@@ -67,6 +68,16 @@
         bottom: 0;
         left: 0;
       }
+
+
+
+
+
+
+
+
+
+
         </style>
     </template>
 </dom-module>
@@ -88,6 +99,16 @@
 
             }
 
+
+
+
+
+
+
+
+
+
+
         </style>
 
         <style include="app-grid-style">
@@ -97,7 +118,7 @@
                 font-family: Roboto, Noto, sans-serif;
             }
             #profile-image {
-                height: 80px;
+                height: 200px;
                 background-color: #ff9800;
             }
 
@@ -127,14 +148,24 @@
           list-style: none;
         }
 
-        .item:nth-child(4n + 1) {
-            @apply --app-grid-expandible-item;
-        }
+        <!--.item:nth-child(4n) {-->
+            <!--@apply &#45;&#45;app-grid-expandible-item;-->
+        <!--}-->
 
         ul {
             padding: 0;
             list-style: none;
         }
+
+
+
+
+
+
+
+
+
+
 
         </style>
 
@@ -147,7 +178,34 @@
             </app-toolbar>
         </app-header>
         <!--<sample-content size="10"></sample-content>-->
-        <div id="profile-image"></div>
+
+        <!--<iron-image style="width:60px; height:60px;"-->
+        <!--src="res/mipmap-xxxhgroup.png.png"></iron-image>-->
+        <!--<div id="profile-image">-->
+
+
+        <!--<iron-image style="width:60px; height:60px;"-->
+        <!--src="res/mipmap-xxxhgroup.png.png"></iron-image>-->
+        <div id="profile-image">
+            <custom-style>
+                <style is="custom-style">
+        #example-sizing-cover {
+        width: 450px;
+        height: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        <!--@apply(&#45;&#45;layout-horizontal);-->
+        <!--@apply(&#45;&#45;layout-center-center);-->
+
+        }
+
+                </style>
+            </custom-style>
+
+            <iron-image sizing="cover" id="example-sizing-cover" alt="The Polymer logo."
+                        src="res/group.png"></iron-image>
+        </div>
         <paper-tabs selected="0">
             <paper-tab>ХОЧУ</paper-tab>
             <paper-tab>ЛЮБЛЮ</paper-tab>
@@ -195,6 +253,8 @@
         target.style.backgroundColor = count === 1 ? '#afb42b' : "#cddc39";
         target.dataset.count = count === 1 ? 0 : 1;
     }
+
+
 
 
 </script>
