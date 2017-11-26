@@ -67,17 +67,6 @@
         bottom: 0;
         left: 0;
       }
-
-
-
-
-
-
-
-
-
-
-
         </style>
     </template>
 </dom-module>
@@ -98,13 +87,6 @@
                 margin-bottom: 24px;
 
             }
-
-
-
-
-
-
-
 
         </style>
 
@@ -135,9 +117,8 @@
           --app-grid-columns: 3;
           --app-grid-gutter: 10px;
           --app-grid-expandible-item-columns: 3;
-          --app-grid-item-height: 20vw;
-          <!--width: 200px;-->
-          background-color: red;
+          --app-grid-item-height: 12vw;
+
         }
 
         ul {
@@ -154,26 +135,6 @@
             padding: 0;
             list-style: none;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         </style>
 
@@ -202,17 +163,17 @@
             </li>
             <li class="item">
 
-                <paper-button toggles raised id="butt">Вязание</paper-button>
+                <paper-button toggles raised id="butt" onclick="setColor(event)">Вязание</paper-button>
 
             </li>
             <li class="item">
 
-                <paper-button toggles raised id="butt">Дача</paper-button>
+                <paper-button toggles raised id="butt" onclick="setColor(event)">Дача</paper-button>
 
             </li>
             <li class="item">
 
-                <paper-button toggles raised id="butt">Daft Punk</paper-button>
+                <paper-button toggles raised id="butt" onclick="setColor(event)">Daft Punk</paper-button>
 
             </li>
         </ul>
@@ -223,23 +184,17 @@
 </dom-module>
 <script>
     Polymer({
-
         is: 'x-profile',
 
-
-
-
     })
+
     function setColor(e) {
         var target = e.target;
+        count = +target.dataset.count;
 
-   target.style.backgroundColor = "#7FFF00";
-
-
+        target.style.backgroundColor = count === 1 ? '#afb42b' : "#cddc39";
+        target.dataset.count = count === 1 ? 0 : 1;
     }
-
-
-
 
 
 </script>
