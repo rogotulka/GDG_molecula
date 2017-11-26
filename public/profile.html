@@ -1,12 +1,13 @@
 <link rel="import" href="bower_components/paper-item/paper-item.html">
+<link rel="import" href="bower_components/paper-button/paper-button.html">
 <link rel="import" href="bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
 <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
 
 <dom-module id="app-grid-style">
-  <template>
-    <style>
+    <template>
+        <style>
       :host {
         /**
          * The width for the expandible item is:
@@ -66,12 +67,40 @@
         bottom: 0;
         left: 0;
       }
-    </style>
-  </template>
+
+
+
+
+
+
+
+
+        </style>
+    </template>
 </dom-module>
 
 <dom-module id="x-profile">
     <template>
+        <style is="custom-style">
+            paper-button {
+                --paper-button: {
+
+                @apply(--layout-horizontal);
+                @apply(--layout-center);};
+                font-family: Roboto, Noto, sans-serif;
+                font:32px;
+                color:white;
+                margin-right: 30%;
+                margin-left: 30%;
+                margin-bottom: 24px;
+
+            }
+
+
+
+
+
+        </style>
 
         <style include="app-grid-style">
 
@@ -84,8 +113,18 @@
                 background-color: #ff9800;
             }
 
+            paper-button{
+                background-color: #ff9800;
+                font-family: Roboto, Noto, sans-serif;
+                font:32px;
+            }
 
-:host {
+            #butt {
+                background-color :#afb42b;
+            }
+
+
+        :host {
           display: block;
           --app-grid-columns: 3;
           --app-grid-gutter: 10px;
@@ -94,26 +133,31 @@
           <!--width: 200px;-->
           background-color: red;
         }
+
         ul {
           margin: 0;
           padding: 0;
           list-style: none;
         }
-        .item {
-          list-style: none;
-          background-color: green;
-        }
+
         .item:nth-child(4n + 1) {
             @apply --app-grid-expandible-item;
         }
-    ul {
-      padding: 0;
-      list-style: none;
-    }
 
-    .item {
-      background-color: white;
-    }
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -141,16 +185,43 @@
         </paper-tabs>
 
         <ul class="app-grid">
-            <li class="item">1</li>
-            <li class="item">2</li>
-            <li class="item">3</li>
-        </ul>
+            <li class="item">
 
+                <paper-button toggles raised id="butt">Гулять в парке</paper-button>
+
+            </li>
+            <li class="item">
+
+                <paper-button toggles raised id="butt">Вязание</paper-button>
+
+            </li>
+            <li class="item">
+
+                <paper-button toggles raised id="butt">Дача</paper-button>
+
+            </li>
+            <li class="item">
+
+                <paper-button toggles raised id="butt">Daft Punk</paper-button>
+
+            </li>
+        </ul>
+        <paper-material elevation="0">
+            <paper-button toggles raised>ПРОДОЛЖИТЬ</paper-button>
+        </paper-material>
     </template>
 </dom-module>
 <script>
     Polymer({
 
         is: 'x-profile'})
+
+
+
+
+
+
+
+
 
 </script>
