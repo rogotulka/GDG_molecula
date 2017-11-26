@@ -75,6 +75,9 @@
 
 
 
+
+
+
         </style>
     </template>
 </dom-module>
@@ -95,6 +98,9 @@
                 margin-bottom: 24px;
 
             }
+
+
+
 
 
 
@@ -166,6 +172,9 @@
 
 
 
+
+
+
         </style>
 
         <app-header reveals>
@@ -187,7 +196,8 @@
         <ul class="app-grid">
             <li class="item">
 
-                <paper-button toggles raised id="butt">Гулять в парке</paper-button>
+                <paper-button toggles raised id="butt" onclick="setColor(event)">Гулять в парке
+                </paper-button>
 
             </li>
             <li class="item">
@@ -214,11 +224,19 @@
 <script>
     Polymer({
 
-        is: 'x-profile'})
+        is: 'x-profile',
 
 
 
 
+    })
+    function setColor(e) {
+        var target = e.target;
+
+   target.style.backgroundColor = "#7FFF00";
+
+
+    }
 
 
 
