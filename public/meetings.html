@@ -79,16 +79,6 @@
           transition: opacity 0.1s;
         }
 
-        .searchInput {
-          @apply --layout-flex;
-          font-size: 18px;
-          padding: 10px 20px;
-          border: none;
-          background-color: rgba(255, 255, 255, 0.2);
-          color: white;
-          -webkit-appearance: none;
-          border-radius: 0px;
-        }
 
         .searchInput:hover {
           background-color: rgba(255, 255, 255, 0.3);
@@ -164,6 +154,8 @@
 
 
 
+
+
         </style>
 
         <!--<app-header reveals>-->
@@ -186,22 +178,36 @@
         <!--handle-as="text" on-response="_didReceiveResponse"></iron-ajax>-->
 
 
-        <iron-list items="[[photos]]" as="photo" scroll-target="document" grid>
 
-                <div class="photoContainer">
-
-                    <template is="dom-repeat" items="{{photos}}">
-
-                        <div class="photoContent">
+            <iron-list items="[[photos]]" as="photo" scroll-target="document" grid>
+                <template>
+                    <div class="photoContainer">
+                        <div class="photoContent" tabindex$="[[tabIndex]]">
                             <iron-image sizing="cover"
-                                        src="{{item.path}}">
+                                        src="{{photo.path}}">
 
                             </iron-image>
-                            <div class="detail">{{item.title}}</div>
+                            <div class="detail">{{photo.title}}</div>
                         </div>
+                    </div>
 
-                    </template>
-                </div>
+                    <!--<paper-fab class="label" label="😻" title="heart eyes cat"></paper-fab>-->
+                </template>
+            </iron-list>
+
+        <!--<div class="photoContainer">-->
+        <!--<template is="dom-repeat" items="{{photos}}">-->
+
+        <!--<div class="photoContent">-->
+        <!--<iron-image sizing="cover"-->
+        <!--src="{{item.path}}">-->
+
+        <!--</iron-image>-->
+        <!--<div class="detail">{{item.title}}</div>-->
+        <!--</div>-->
+
+        <!--</template>-->
+        <!--</div>-->
 
         </iron-list>
         <paper-fab icon="add"></paper-fab>
@@ -232,15 +238,17 @@
 
         ready: function() {
         this.photos = [
-            {path: 'res/1.jpg', title:'fsdfas'},
-            {path: 'res/2.jpg', title:'fsdfas'},
-            {path: 'res/3.jpg', title:'fsdfas'}
-
+            {path: 'res/1.jpg', title:'Приключение по мотивам фильма «Полярный экспресс»'},
+            {path: 'res/2.jpg', title:'Джазовый концерт для детей'},
+            {path: 'res/3.jpg', title:'Погулять в парке'},
+            {path: 'res/4.png', title:'Квест «Волшебный ключ»'}
             ]}
 
         });
 
     });
+
+
 
 
 
